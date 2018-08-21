@@ -1,14 +1,80 @@
-\documentclass{article}
+\documentclass[12pt]{amsart}
+\usepackage{amssymb}
+\usepackage{cite}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mdwtab}
+\usepackage{mathtools}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{hyphenat}
+\usepackage{enumitem}
+\usepackage{mathabx}
+\usepackage{color}
+\usepackage[pdftex]{graphicx}
+\usepackage[pdftex,margin=1in,marginparwidth=0.75in]{geometry}
+\usepackage[bookmarks=true, bookmarksopen=true,%
+    bookmarksdepth=3,bookmarksopenlevel=2,%
+    colorlinks=true,%
+    linkcolor=blue,%
+    citecolor=blue,%
+    filecolor=blue,%
+    menucolor=blue,%
+    urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={Metric Geometry: Class Notes}}
+\hypersetup{pdfauthor={Dylan P. Thurston et al.}}
+\usepackage[textsize=small]{todonotes}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\tikzstyle{every picture}=[> = to]
+% Style for labels on arrows in commutative diagrams
+\tikzset{cdlabel/.style={execute at begin node=$\scriptstyle,execute at end node=$}}
+\tikzset{implication/.style={double equal sign distance, -implies}}
+\tikzset{biimplication/.style={double equal sign distance, implies-implies}}
 
-\title{M531 Metric Geometry}
-\author{Dylan Thurston}
-\date{August 2018}
+\input{macros}
+\input{defs}
+
+\graphicspath{{draws/}}
 
 \begin{document}
+\title[Metric Geometry: Class Notes]{Metric Geometry: Class Notes\\
+  \small Fall 2018}
+
+\author[Thurston]{Dylan~P.~Thurston}
+\author{members of M531}
+\date{\today}
+
+%\subjclass[2000]{Primary xxx; Secondary xxx}
+%\keywords{}
 
 \maketitle
 
-\section{Introduction}
+\tableofcontents
+
+\section{Metric spaces}
+\label{sec:metric-spaces}
+
+\begin{definition}
+  A \emph{metric space} is a set~$X$ together with a \emph{distance
+    function} $d \colon X \times X \to \RR_{\ge 0} \cup \{\infty\}$
+  satisfying the following axioms for all $x,y,z \in X$.
+  \begin{itemize}
+  \item \textbf{(Reflexive)} $d(x,x) = 0$.
+  \item \textbf{(Triangle inequality)} $d(x,z) \le d(x,y) + d(y,z)$.
+    (Going straight from $x$ to~$z$ is at least as good as going from
+    $x$ to~$y$ and then from $y$ to~$z$.)
+  \item \textbf{(Symmetry)} $d(x,y) = d(y,x)$.
+  \item \textbf{(Distinguishable)} If $d(x,y) = 0$, then $x = y$.
+  \end{itemize}
+\end{definition}
 
 \end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
