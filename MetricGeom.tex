@@ -14,7 +14,7 @@
 \usepackage{mathabx}
 \usepackage{color}
 \usepackage[pdftex]{graphicx}
-\usepackage[pdftex,margin=1in,marginparwidth=0.75in]{geometry}
+\usepackage[pdftex,margin=1in,lmargin=0.75in,rmargin=1.5in,marginparwidth=1.4in]{geometry}
 \usepackage[bookmarks=true, bookmarksopen=true,%
     bookmarksdepth=3,bookmarksopenlevel=2,%
     colorlinks=true,%
@@ -25,7 +25,6 @@
     urlcolor=blue]{hyperref}
 \hypersetup{pdftitle={Metric Geometry: Class Notes}}
 \hypersetup{pdfauthor={Dylan P. Thurston et al.}}
-\usepackage[textsize=small]{todonotes}
 \usepackage{url}
 \usepackage{tikz}
 \usetikzlibrary{arrows}
@@ -48,9 +47,6 @@
 \author{members of M531}
 \date{\today}
 
-%\subjclass[2000]{Primary xxx; Secondary xxx}
-%\keywords{}
-
 \maketitle
 
 \tableofcontents
@@ -58,6 +54,7 @@
 \section{Metric spaces}
 \label{sec:metric-spaces}
 
+\scribe{Dylan Thurston}{2018-08-20}
 \begin{definition}
   A \emph{metric space} is a set~$X$ together with a \emph{distance
     function} $d \colon X \times X \to \RR_{\ge 0} \cup \{\infty\}$
