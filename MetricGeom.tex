@@ -69,6 +69,246 @@
   \end{itemize}
 \end{definition}
 
+\begin{example}
+  $\RR^2$, with its standard Euclidean metric $d_{\text{Eucl}}$, is a
+  metric space.
+\end{example}
+
+\begin{example}
+  $\ZZ^2$, with the metric $d_{\text{Eucl}}$ induced as a subset of
+  $\RR^2$, is a metric space.
+\end{example}
+
+\begin{example}
+  $\RR^2$ with the taxicab metric defined by
+  \[
+    d_{\text{taxi}}\bigl((x_1,x_2),(y_1,y_2)\bigr) = \abs{x_1 - y_1} +
+    \abs{x_2 - y_2},
+  \]
+  is a metric space. In this space, the balls are diamond-shape rather
+  than circles.
+\end{example}
+
+\begin{example}
+  The standard unit sphere $S^2 \subset \RR^3$ with the extrinsic
+  metric $d_{\text{extr}}$ induced
+  as a subset of $\RR^3$ is a metric space.
+\end{example}
+
+If you drop the condition that the metric be distinguishable, you get
+a \emph{pseudometric} space. For instance, $\RR^2$ with the metric
+that is identically $0$ is a pseudometric space, as is $\RR^2$ with
+the metric that only measures distance along the first coordinate.
+
+If you drop the condition that the metric is symmetric, you get an
+\emph{asymmetric metric}. These are less standard, despite occurring in
+natural situations.
+
+\begin{example}
+  An (undirected) graph gives a metric space, where the points are the
+  vertices and the distance between two vertices is the minimum number
+  of edges you need to cross to get from one vertex to another. A
+  \emph{directed} graph gives an asymmetric metric space, where you
+  are only allowed to cross edges in the direction of the arrow.
+\end{example}
+
+Another real-world example of an asymmetric metric is travel
+difficulty; it is much harder to walk from the bottom of a mountain to
+the top than the other way around.
+
+A metric naturally gives you a \emph{topology}, for instance defining
+continuous maps.
+\begin{definition}
+  If $X$ and $Y$ are metric spaces, a function $f \colon X \to Y$ is
+  \emph{continuous} if
+  \[
+  \forall x \in X, \,\forall \epsilon > 0,\,
+  \exists \delta > 0,\,\forall y \in X\colon
+  d_X(x,y) < \delta \Rightarrow d_Y(f(x),f(y)) < \epsilon
+  \]
+  or, loosely, if points sufficiently close to each other in~$X$ are
+  close in~$Y$. Subtle variations yield different concepts; for
+  instance, if you move the clause ``$\forall y \in X$'' to the
+  beginning, then you get the notion of \emph{uniform continuity},
+  which depends on the metric and not just on the topology.
+\end{definition}
+
+\section{Quasi-isometries (preview)}
+\label{sec:quasi-isom-1}
+A metric gives a lot more structure than just a topology. On the other
+end of the spectrum of what a metric gives you, we have the notion of
+\emph{quasi-isometric embedding}, which ignores what happens on the
+small scale (which is the only thing relevant to the topology), and in
+stead focuses on the behavior on grand scales.
+
+\begin{definition}
+  If $X$ and $Y$ are metric spaces, a function $f \colon X \to Y$ is a
+  \emph{quasi-isometric embedding} if there are constants $K >1$ and
+  $C > 0$ so that $\forall x,y \in X$,
+  \[
+    \frac{d_X(x,y) - C}{K}
+      \le d_Y(f(x), f(y)) \le
+        K d_X(x,y) + C.
+  \]
+  That is, distances in $X$ are distorted by $f$ by at most a
+  multiplicative factor~$K$ and an additive constant~$C$.
+\end{definition}
+
+\begin{example}
+  The identity map
+  $(\RR^2, d_{\text{Eucl}}) \to (\RR^2, d_{\text{taxi}})$ is a
+  quasi-isometry with $K = \sqrt{2}$ and $C=0$, as is the identity map
+  going the other way.
+\end{example}
+
+\begin{example}
+  The inclusion map
+  $(\ZZ^2,d_{\text{Eucl}}) \hookrightarrow (\RR^2,d_{\text{Eucl}})$ is a
+  quasi-isometry with $K=1$ and $C=0$, i.e., an \emph{isometry}.
+\end{example}
+
+\begin{example}
+  The map $f \colon (\RR^2, d_{\text{Eucl}}) \to (\ZZ^2,
+  d_{\text{Eucl}})$ defined by
+  \[
+    f\bigl((x_1,x_2)\bigr) = (\ceil{x_1}, \ceil{x_2})
+  \]
+  is a quasi-isometry with $K=1$ and $C=2$. (Can this value of $C$ be
+  improved?) Note that $f$ is not continuous.
+\end{example}
+
+\begin{example}
+  There is a quasi-isometry from $(S^2, d_{\text{extr}})$ to
+  $(\RR^2, d_{\text{Eucl}})$; for instance, project on to the plane, or
+  more simply map all of $S^2$ to a single point. However, there is no
+  quasi-isometry in the other direction.
+\end{example}
+
+\begin{exercise}
+  Verify the above assertions.
+\end{exercise}
+
+\begin{definition}
+  A quasi-isometric embedding $f \colon X \to Y$ is a
+  \emph{quasi-isometry} if every point in~$Y$ is near the image
+  of~$X$, or, precisely, if there is a constant $C_2 > 0$ so that
+  \[
+    \forall y \in Y,\, \exists x \in X\colon d_Y(f(x),y) < C_2.
+  \]
+\end{definition}
+
+\begin{exercise}
+  Show that if $f \colon X \to Y$ is a quasi-isometry, then there is
+  also a quasi-isometry $g \colon Y \to X$. What can you
+  say about the composition $g \circ f$?
+\end{exercise}
+
+\begin{exercise}
+  Show that a metric space $(X,d)$ is quasi-isometric to a point iff
+  $d$ is bounded.
+\end{exercise}
+
+\begin{exercise}
+  If $X$ is any metric space, show that any map $f \colon X \to X$
+  that moves each point a (globally) bounded amount is a
+  quasi-isometry. (For instance, $f$ need not be continuous.)
+\end{exercise}
+
+The notion of quasi-isometry is quite useful in group theory, since it
+can give us some notion of large-scale geometry even on discrete sets
+like a fundamental group. For instance, the following theorem is true.
+
+\begin{theorem}
+  If $X$ is a compact manifold,
+  then its fundamental group $\pi_1(X)$ is quasi-isometric to its
+  universal cover $\wt X$.
+\end{theorem}
+
+Here, we use the metric on $\pi_1(X)$ coming from its \emph{Cayley
+  graph}, which we will come back to later.
+
+\begin{example}
+  For $X = S^1$, we have seen that $\pi_1(S^1) = \ZZ$ is
+  quasi-isometric to $\widetilde{S^1} = \RR$. For $X = S^2$, we have
+  seen that $\pi_1(S^2) = \{e\}$ is quasi-isometric to
+  $\widetilde{S^2} = S^2$.
+\end{example}
+
+\begin{question}
+  Is there an unbounded metric $d$ on $\RR^2$, inducing the standard
+  topology, so that $(\RR^2,d)$ is not quasi-isometric to
+  $(\RR^2,d_{\text{Eucl}})$?
+\end{question}
+
+\begin{question}
+  What properties of metric spaces are preserved by quasi-isometries?
+\end{question}
+
+We will consider quasi-isometry and other ``quasi'' notion more later
+in the course. In the meantime, you can think about the questions
+above as we go along.
+
+\section{Lengths of curves}
+\label{sec:lengths}
+
+\begin{definition}
+  A \emph{curve}~$\gamma$ in a metric space $(X,d)$ is a continuous map
+  \[
+    \gamma\colon [0,1] \to X,
+  \]
+  using the standard metric on the interval.
+\end{definition}
+
+What should the length of a curve be? For sufficiently nice curves in
+$(\RR^2, d_{\text{Eucl}})$, we can use the calculus definition and set
+the length to be
+\begin{equation}
+  \label{eq:length-eucl}
+  \int_0^1 \abs{\gamma'(t)}\,dt.
+\end{equation}
+However, this doesn't work if the target space has no notion of
+differentiation. It doesn't even always work well in $\RR^2$.
+
+\begin{example}
+  Take $\gamma$ to be a nice curve in $\RR^2$ (say a semi-circle), and
+  let $\phi \colon [0,1] \to [0,1]$ be a weakly monotonic
+  reparametrization function (with $\phi(0) = 0$ and $\phi(1) = 1$),
+  so that its derivative is almost everywhere~$1/2$ (like the
+  \href{https://en.wikipedia.org/wiki/Cantor_function}{Devil's
+    Staircase}, with an additional linear function added). Then we
+  expect $\gamma \circ \phi$ to describe the same geometric curve as
+  $\gamma$ and have the same length. But the
+  integral~(\ref{eq:length-eucl}) (to the extent it exists) gives a
+  different answer.
+\end{example}
+
+To get something more general, we look at subdivisions.
+
+\begin{definition}\label{def:length}
+  If $\gamma$ is a curve in a metric space~$X$, its \emph{length} is
+  defined to be
+  \begin{equation}\label{eq:length}
+    \ell(\gamma) = \sup \sum_{i=0}^k d(\gamma(t_i), \gamma(t_{i+1})),
+  \end{equation}
+  where the supremum runs over all subdivisions of $[0,1]$ into
+  a finite number of subintervals at
+  \[
+    0 = t_0 < t_1 < \cdots < t_k < t_{k+1} = 1.
+  \]
+\end{definition}
+
+Note that if we make a subdivision finer by adding an extra point, the
+supremand in~(\ref{eq:length}) can only increase (by the triangle
+inequality). This helps with convergence.
+
+\begin{exercise}
+  If you know about the theory of
+  \href{https://en.wikipedia.org/wiki/Net_(mathematics)}{nets}, verify
+  that subdivisions of the interval form a directed set under refining
+  subdivisions, and that supremum can be replaced by limit of a net
+  in Equation~(\ref{eq:length}).
+\end{exercise}
+
 \end{document}
 
 %%% Local Variables: 

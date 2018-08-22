@@ -7,6 +7,7 @@
 \newcommand{\EE}{\mathbb E}
 \newcommand{\HH}{\mathbb H}
 \newcommand{\NN}{\mathbb N}
+\renewcommand{\epsilon}{\varepsilon}
 
 \newcommand{\comma}{\mathbin ,}
 \newcommand{\conn}{\mathbin \#}
@@ -14,10 +15,8 @@
 \renewcommand{\sl}{\mathfrak{sl}}
 \newcommand{\gl}{\mathfrak{gl}}
 \newcommand{\fg}{{\mathfrak g}}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\abs}[1]{{\lvert #1 \rvert}}
-\newcommand{\norm}[1]{{\lVert #1 \rVert}}
 \newcommand{\OneHalf}{{\textstyle\frac{1}{2}}}
+\newcommand{\wt}[1]{\widetilde{#1}}
 
 % Synonyms for commands I never remember
 \newcommand{\isom}{\cong}
@@ -34,6 +33,8 @@
 % More delimiters
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
 
 % Various operators.
 \DeclareMathOperator{\ad}{ad}
@@ -55,36 +56,34 @@
 \DeclareMathOperator{\SL}{\mathit{SL}}
 \DeclareMathOperator{\PSL}{\mathit{PSL}}
 
-% Special knots
-\newcommand{\unknot}{\bigcircle}
-
 % Theorems
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}{Proposition}
-\newtheorem{lemma}[proposition]{Lemma}
-\newtheorem{corollary}[proposition]{Corollary}
-\newtheorem{claim}[proposition]{Claim}
-\newtheorem{conjecture}[proposition]{Conjecture}
-\newtheorem{observation}[proposition]{Observation}
+\numberwithin{equation}{section}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{claim}[equation]{Claim}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{observation}[equation]{Observation}
 
 \theoremstyle{definition}
-\newtheorem{definition}[proposition]{Definition}
-\newtheorem{exercise}[proposition]{Exercise}
-\newtheorem{question}[proposition]{Question}
-\newtheorem{problem}[proposition]{Problem}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{question}[equation]{Question}
+\newtheorem{problem}[equation]{Problem}
 
 \theoremstyle{remark}
-\newtheorem{example}[proposition]{Example}
-%\newtheorem{hint}[proposition]{Hint}
+\newtheorem{example}[equation]{Example}
+%\newtheorem{hint}[equation]{Hint}
 \newtheorem*{remark}{Remark}
-%\newtheorem{apology}[proposition]{Apology}
-%\newtheorem{warning}[proposition]{Warning}
+%\newtheorem{apology}[equation]{Apology}
+%\newtheorem{warning}[equation]{Warning}
 
 % Hyphenation.
 \hyphenation{Thurs-ton}
 
-% Noting scribes
+% Noting daily scribes
 \newcommand{\scribe}[2]{\marginpar{\small #1\\\texttt{#2}}}
 
 %%% Local Variables: 
