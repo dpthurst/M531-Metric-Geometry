@@ -14,7 +14,7 @@
 \usepackage{mathabx}
 \usepackage{color}
 \usepackage[pdftex]{graphicx}
-\usepackage[pdftex,margin=1in,lmargin=0.75in,rmargin=1.5in,marginparwidth=1.4in]{geometry}
+\usepackage[pdftex,margin=1in,lmargin=0.75in,rmargin=1.5in,marginparwidth=1.2in]{geometry}
 \usepackage[bookmarks=true, bookmarksopen=true,%
     bookmarksdepth=3,bookmarksopenlevel=2,%
     colorlinks=true,%
@@ -37,7 +37,7 @@
 \input{macros}
 \input{defs}
 
-\graphicspath{{draws/}}
+\graphicspath{{draws/}{}}
 
 \begin{document}
 \title[Metric Geometry: Class Notes]{Metric Geometry: Class Notes\\
@@ -311,22 +311,25 @@ inequality). This helps with convergence.
   in Equation~(\ref{eq:length}).
 \end{exercise}
 
-\scribe{Tom Yerger}{08-22-2018}
+\scribe{Tom Yerger}{2018-08-22}
 
 \begin{example}
 There are plenty of examples of curves in metric spaces with infinite length. Consider the (ternary) Dragon curve, defined as follows:
 
 At step 1 of the construction, we have  straight line path in $\mathbb{R}^2$ between two points. At each step of the construction, we bisect all segments of the curve, and bend the curve into equilateral triangles in opposite directions, as pictured below. Some trigonometry (as demonstrated in the image) shows that the length of the curve is bounded below by a geometric series with common ration $\frac{2}{\sqrt{3}}$, which is of course bigger than $1$.
 
-One can check that the limit of this process is a continuous curve in the plane. Some steps of the construction are depicted below, along with the limit.
+One can check that the limit of this process is a continuous curve in the plane. Some steps of the construction are depicted below.
+\begin{center}
+  \includegraphics[width=4in]{2018-08-22-Dragon1}
+\end{center}
 
+\pagebreak[2]
+Here is a better approximation of the limit.
+\begin{center}
+  \includegraphics[width=3in]{2018-08-22-Dragon2}
+\end{center}
 \end{example}
 
-\begin{center}
-
-[Dragon Curve Here]
-
-\end{center}
 
 The previous example motivates the following definition:
 
