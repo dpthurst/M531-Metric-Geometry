@@ -311,6 +311,55 @@ inequality). This helps with convergence.
   in Equation~(\ref{eq:length}).
 \end{exercise}
 
+\scribe{Tom Yerger}{08-22-2018}
+
+\begin{example}
+There are plenty of examples of curves in metric spaces with infinite length. Consider the (ternary) Dragon curve, defined as follows:
+
+At step 1 of the construction, we have  straight line path in $\mathbb{R}^2$ between two points. At each step of the construction, we bisect all segments of the curve, and bend the curve into equilateral triangles in opposite directions, as pictured below. Some trigonometry (as demonstrated in the image) shows that the length of the curve is bounded below by a geometric series with common ration $\frac{2}{\sqrt{3}}$, which is of course bigger than $1$.
+
+One can check that the limit of this process is a continuous curve in the plane. Some steps of the construction are depicted below, along with the limit.
+
+\end{example}
+
+\begin{center}
+
+[Dragon Curve Here]
+
+\end{center}
+
+The previous example motivates the following definition:
+
+\begin{definition} A curve $\gamma$ will be called \textit{rectifiable} if $\ell (\gamma) < \infty$. Otherwise it is called \textit{non-rectifiable}.
+
+\end{definition}
+
+Some metric spaces are so wild that they do not have any non-constant rectifiable curves between points. One way this can happen is if the metric space is discrete, in the sense that all points are isolated (not necessarily carrying the discrete metric). There are of course no continuous paths connecting isolated points! Thus, any lattice in $\mathbb{R}^n$ with any metric at all gives an example. However, there are more interesting examples of non-discrete spaces.
+
+\begin{example}
+Let $X = (\mathbb{R}, \rho)$, where $\rho(x,y) = \sqrt{|x-y|}$. We claim that this space has no non-constant rectifiable paths. We will prove this in two steps. First, we will show that the path $\gamma: [a,b] \hookrightarrow \mathbb{R}$ is not rectifiable as a lemma. Then we will treat the general case.
+
+For the lemma, consider the naive sequence of subdividing the interval into $n$ equal parts. If we do this, then all the distance terms are precisely $\sqrt{\frac{|b-a|}{n}}$, so the terms of this sequence as $n \to \infty$ are increasing like $\sqrt{n}$, which diverges.
+
+Now for the heart of the proof, observe that if the curve is non-constant, it must pass through the midpoint $(b-a)/2$ at some $t$, by the intermediate value theorem. We take this to be our first partition. The $n$-th partition is constructed by choosing one $t_i$ for each time that the curve passes over $i(b-a)/n$. This partition's length will be bounded below in terms of the previous example, and so also diverges. Thus the lemma implies that all non-constant curves are non-rectifiable.
+\end{example}
+
+\begin{remark}
+The same argument works analogously with any metric of the form $\rho(x,y) = |y-x|^\epsilon$, for $0 < \epsilon < 1$. One must check that this defines a metric, but after doing so, the same argument works analogously. Taking $\epsilon \to 1$, we get the usual metric. Taking $\epsilon \to 0$, the limiting metric is the discrete metric, which may give some intuition for why such curves are non-rectifiable, as there are no non-constant curves at all in a discrete space. One can think of $\epsilon < 1$ as "close" to the degenerate case of the discrete metric.
+\end{remark}
+
+There are a handful of useful properties of the length function that are worth recording, even if they are elementary:
+
+\begin{enumerate}
+    \item $\ell(\gamma) \geq d(\gamma(a), \gamma(b)$. 
+    \item The length function is invariant under a monotonic reparameterization. 
+    \item If $\gamma_1:[a,b] \to X$, and $\gamma_2:[b,c] \to X$, with $\gamma_1(b) = \gamma_2(b)$, then the amalgamated curve $\Gamma$ has $\ell(\Gamma) = \ell(\gamma_1) + \ell(\gamma_2)$
+    \item $\ell(\gamma|_{[c,d]})$ is a continuous function of $c,d$
+    \item $\ell(\gamma)$ is a lower semicontinuous functon in the topology of uniform convergence.
+\end{enumerate}
+
+Each of these results, with the exception of (5) is an immediate consequence of the definitions. The proof of (5) will be added by the next scribe.
+
 \end{document}
 
 %%% Local Variables: 
