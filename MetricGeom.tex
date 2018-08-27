@@ -378,7 +378,7 @@ where $N$ is the number of points of the partition $Y$. Since $\epsilon$ and $\d
 Observe that the following image indicates that lower semicontinuity is all that can be asked for. The image displays a sequence of functions converging pointwise, but the lengths are constant and not converging to the length of the limit.
 
 \begin{center}
-  \includegraphics[width=3in]{2018-08-24-Dragon2}
+  \includegraphics[width=3in]{2018-08-24}
 \end{center}
 
 Measuring distances along curves is such a natural idea that we give spaces where it is feasible a name:
@@ -424,7 +424,39 @@ As a warning, a geodesic in this sense is not the same as a Riemannian geodesic.
 \begin{exercise}
 Suppose that $\gamma$ is a rectifiable curve. Show that there is a reparametrization of $\gamma$, $\gamma'$ such that $\gamma = \gamma' \circ \varphi$, so that $\gamma'$ is now parametrized by arc length. That is to say, $\ell(\gamma'|_{[a,b]}) = b - a$ for any $[a,b]$ in the domain of $\gamma'$.
 \end{exercise}
+\scribe{Aric Wheeler}{8-27-2018}
+\begin{exercise}
+Suppose $\gamma:[a,b]\rightarrow X$ is a rectifiable curve, then:
+\begin{enumerate}
+    \item Define $\phi(t):=\ell(\gamma|_{[a,t]})$. Then $\phi$ is a continuous, weakly monotonic function.\\
+    \item Fix $s\le\ell(\gamma)$, define a new curve $\bar{\gamma}(s):=\gamma(t)$ for some $t\in\phi^{-1}(\{s\})$. Then $\bar{\gamma}$ is well-defined and continuous.\\
+    \item $\bar{\gamma}\circ\phi=\gamma$, $\bar{\gamma}$ is said to be \underline{parameterized by arc length}, i.e. $\ell(\bar{\gamma}|_{[s,t]})=|t-s|$.
+\end{enumerate}
+\end{exercise}
 
+\section{Hopf-Rinow/Cohn-Vassen}
+Today: We will show that every complete, locally compact length space is a geodesic space.\\
+\begin{definition}
+\begin{itemize}
+    \item For $X$ a metric space, set $|a-b|=d(a,b)$.
+    \item Let $X$ be a metric space, for a pair $a,b\in X$ a \underline{midpoint between a,b} is a point $c\in X$ such that $|a-c|=|b-c|=\frac{1}{2}|a-b|$.
+    \item An \underline{$\epsilon$-midpoint} is a point $c\in X$ such that $|a-c|,|b-c|\le \frac{1+\epsilon}{2}|a-b|$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+\begin{itemize}
+    \item In a geodesic space, every pair of points has a midpoint.\\
+    \item In a length space, every pair of points has an $\epsilon$-midpoint for each $\epsilon>0$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+\begin{itemize}
+    \item Given $a,b\in X$, let $\gamma:[0,|a-b|]\rightarrow X$ be a geodesic parameterized by arc-length. Then the point $c=\gamma(\frac{|a-b|}{2})$ is a midpoint.
+    \item Take a $\gamma:[0,|b-a|]\rightarrow X$ a curve connecting $a,b$ parameterized by arc length such that $\ell(\gamma)\le \frac{1+\epsilon}|b-a|$. Letting $c=\gamma(\frac{|b-a|}{2})$ as above gives an $\epsilon$-midpoint.
+\end{itemize}
+\end{proof}
 
 \end{document}
 
