@@ -361,7 +361,70 @@ There are a handful of useful properties of the length function that are worth r
     \item $\ell(\gamma)$ is a lower semicontinuous functon in the topology of uniform convergence.
 \end{enumerate}
 
-Each of these results, with the exception of (5) is an immediate consequence of the definitions. The proof of (5) will be added by the next scribe.
+\begin{proof}
+
+Each of these results, with the exception of (5) is an immediate consequence of the definitions.  For this, let $\gamma_i$ be a sequence of curves converging uniformly to $\gamma$, as in the statement. Choose a partition $Y$ so that $\sum(\gamma, Y)$ approximates $\ell(\gamma)$. We have 
+
+$$\sum(\gamma, Y) \leq \ell(\gamma) \leq \sum(\gamma, Y) + \epsilon $$
+
+By uniform convergence, making $i$ large, we can arrange that $d(\gamma_i(t), \gamma(t)) < \delta$, for any $\delta > 0$. Now by choosing the same partition for $\gamma_i$, we may approximate the lengths of $\gamma$ in terms of $\gamma_i$, by travelling a distance at most $\delta$ from $\gamma$ to $\gamma_i$, and then travelling along $\gamma_i$, and then back to the tail of $\gamma$. This gives an upper bound for the length of $\gamma$ by writing 
+
+$$\sum(\gamma, Y) + \epsilon \leq 2 \delta N + \sum(\gamma_i, Y) + \epsilon \leq \ell(\gamma_i) + 2 \delta N  + \epsilon$$
+
+where $N$ is the number of points of the partition $Y$. Since $\epsilon$ and $\delta$ are arbitrary, this shows that $\ell(\gamma) \leq \liminf \ell(\gamma_i)$, which is equivalent to lower semicontinuity.
+
+\end{proof}
+
+Observe that the following image indicates that lower semicontinuity is all that can be asked for. The image displays a sequence of functions converging pointwise, but the lengths are constant and not converging to the length of the limit.
+
+\begin{center}
+  \includegraphics[width=3in]{2018-08-24-Dragon2}
+\end{center}
+
+Measuring distances along curves is such a natural idea that we give spaces where it is feasible a name:
+
+\begin{definition}
+The intrinsic metric on a metric space $X$ is defined by $\rho(x,y) = \inf_\gamma \ell(\gamma)$, where $\gamma$ is a curve $[a,b] \to X$ satisfying $\gamma(a) = x, \gamma(b) = y$.  If the intrinsic metric on a space is equal to the metric it came equipped with, we call $X$ a \textit{length space}. Note that unlike ordinary metric spaces, here we will define $\rho(x,y) = \infty$ if there is no rectifiable path between $x$ and $y$, meaning that our metric space takes values in $[ 0, \infty ]$
+\end{definition}
+
+In a non-length space, a wide variety of behaviors are possible. The differing metrics do not even need to induce the same topologies. Consider the following examples:
+
+\begin{example}
+Let $X_1$ be a spiral, given in polar coordinates by $r = t/(t+1)$ and $\theta = t$, together with the limiting boundary circle of radius $1$. The induced metric as a subspace of $\mathbb{R}^2$ is quite different, as points which are quite close together as points in $\mathbb{R}^2$ can be extremely far apart. Furthermore, observe that there is no path from a point on the spiral to the boundary circle, and yet in am arbitrary neighborhood of a boundary point in the Euclidean metric, we can find infinitely many points from the spiral.
+\end{example}
+
+\begin{example}
+Consider $\mathbb{R}^2$ with the following 'comb' metric. Let $p = (x_1, y_1)$, $q = (x_2, y_2)$. Then $d(p,q)= |x_2 - x_1| + |y_2 - y_1|^\epsilon$, for $0 \leq \epsilon < 1$. By the previous discussion, no rectifiable path can move in the vertical direction. This is also clearly a metric, by that same discussion, as it is a sum of two metrics in each factor. However, in this topology, the plane is not even connected. It is a disjoint union of uncountably many horizontal straight lines. 
+\end{example}
+
+In spite of how badly the topology can change, the following proposition demonstrates that rectifiable curves are the 'correct' class of curves to be studying for metric geometry:
+
+\begin{proposition}
+Suppose $\gamma:[a,b] \to X$ is rectifiable in $d$. Then it is also rectifiable in the intrinsic metric $\hat{d}$ and $\ell_d (\gamma) = \ell_{\hat{d}} (\gamma)$.
+\end{proposition}
+
+\begin{proof}
+The inequality $\ell_d (\gamma) \leq \ell_{\hat{d}} (\gamma)$ is completely trivial. For the reverse inequality, pick a aprtition $Y$ of the domain $[a,b]$, and consider $\sum(\gamma, Y)$. We have $\sum(\gamma, Y) = \sum \hat{d}(\gamma(t_i), \gamma(t_{i+1})) \leq \sum \ell_d(\gamma|_{[t_i, t_{i+1}]})$, since $\gamma$ is just one curve connecting these points, and $\hat{d}$ is defined to be the inf over all such curves. But additivity of $\ell$ above implies this is just $\ell_d (\gamma)$.
+\end{proof}
+
+As a corollary, this implies that the induced metric does not itself induce another new metric. In other words, $\hat{\hat{d}} = \hat{d}$. Also, note that we must have $\gamma$ rectifiable. If $\gamma$ is not assumed rectifiable, the comb metric above can furnish us with examples of curves which are not even continuous in the induced metric.
+
+In many examples of familiar metric spaces, especially complete metric spaces, the infimum is attained. This motivates the following definition:
+
+\begin{definition}
+A \textit{geodesic} $\gamma:[a,b] \to X$ is a curve attaining the infinimum between $\gamma(a)$ and $\gamma(b)$. A \textit{geodesic space} is a space in which every pair of points has at least one geodesic. It need not be unique. 
+\end{definition}
+
+\begin{example}
+The plane, sphere, and hyperbolic space are all geodesic spaces. Puncturing any of these spaces makes them no longer geodesic spaces, as seen by picking any two points for which the geodesic would have had to pass through that point, had it existed. In the Euclidean and hyperbolic space, geodesics are unique. However, on the sphere, they need not be. Choosing two antipodal means that any arc of a great circle forming half an equator will be a geodesic connecting these points.
+
+As a warning, a geodesic in this sense is not the same as a Riemannian geodesic. In Riemannian geometry, the equator of a sphere is regarded as a geodesic. However, in our sense, it is not, as any curve going beyond the antipode on a sphere will not be the infimal length (as you are going 'the long way' around the sphere).
+\end{example}
+
+\begin{exercise}
+Suppose that $\gamma$ is a rectifiable curve. Show that there is a reparametrization of $\gamma$, $\gamma'$ such that $\gamma = \gamma' \circ \varphi$, so that $\gamma'$ is now parametrized by arc length. That is to say, $\ell(\gamma'|_{[a,b]}) = b - a$ for any $[a,b]$ in the domain of $\gamma'$.
+\end{exercise}
+
 
 \end{document}
 
